@@ -1,0 +1,17 @@
+<!-- home.html -->
+{% extends "layout.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>Welcome to the Home Page</h1>
+{% if movies %}
+    <ul>
+    {% for movie in movies %}
+        <li>{{ movie.id }} {{ movie.title }} ({{ movie.year }}) - Rating: {{ movie.score }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No movies found!</p>
+{% endif %}
+{% endblock %}

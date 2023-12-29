@@ -1,0 +1,33 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<h1>All Movies</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Year</th>
+            <th>Score</th>
+            <th>Added On</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for movie in movies %}
+        <tr>
+            <td>{{ movie['title'] }}</td>
+            <td>{{ movie['year'] }}</td>
+            <td>{{ movie['score'] }}</td>
+            <td>{{ movie['created_at'] }}</td>
+            <td>
+                <form method="post" action="{{ url_for('delete_movie', id=movie['id']) }}">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
